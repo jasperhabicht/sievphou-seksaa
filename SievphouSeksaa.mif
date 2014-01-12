@@ -1,0 +1,1291 @@
+//====================================================
+// LIGATURES BEFORE REARRANGEMENT
+//====================================================
+// Substitutes Coeng plus Consonant by
+// subscript alternates.
+//====================================================
+
+Type			LigatureList
+Name			NULL
+Namecode		16001
+Setting			NULL
+Settingcode		0
+Default			yes
+Orientation		HV
+Forward			yes
+Exclusive		no
+
+List
+	khm.coeng_ka	khm.coeng khm.ka
+	khm.coeng_kha	khm.coeng khm.kha
+	khm.coeng_ko	khm.coeng khm.ko
+	khm.coeng_kho	khm.coeng khm.kho
+	khm.coeng_ngo	khm.coeng khm.ngo
+	khm.coeng_ca	khm.coeng khm.ca
+	khm.coeng_cha	khm.coeng khm.cha
+	khm.coeng_co	khm.coeng khm.co
+	khm.coeng_cho	khm.coeng khm.cho
+	khm.coeng_nyo	khm.coeng khm.nyo
+	khm.coeng_da	khm.coeng khm.da
+	khm.coeng_ttha	khm.coeng khm.ttha
+	khm.coeng_do	khm.coeng khm.do
+	khm.coeng_ttho	khm.coeng khm.ttho
+	khm.coeng_nna	khm.coeng khm.nna
+	khm.coeng_ta	khm.coeng khm.ta
+	khm.coeng_tha	khm.coeng khm.tha
+	khm.coeng_to	khm.coeng khm.to
+	khm.coeng_tho	khm.coeng khm.tho
+	khm.coeng_no	khm.coeng khm.no
+	khm.coeng_ba	khm.coeng khm.ba
+	khm.coeng_pha	khm.coeng khm.pha
+	khm.coeng_po	khm.coeng khm.po
+	khm.coeng_pho	khm.coeng khm.pho
+	khm.coeng_mo	khm.coeng khm.mo
+	khm.coeng_yo	khm.coeng khm.yo
+	khm.coeng_ro	khm.coeng khm.ro
+	khm.coeng_lo	khm.coeng khm.lo
+	khm.coeng_vo	khm.coeng khm.vo
+	khm.coeng_sha	khm.coeng khm.sha
+	khm.coeng_sso	khm.coeng khm.sso
+	khm.coeng_sa	khm.coeng khm.sa
+	khm.coeng_ha	khm.coeng khm.ha
+	khm.coeng_la	khm.coeng khm.la
+	khm.coeng_qa	khm.coeng khm.qa
+	khm.coeng_qi	khm.coeng khm.qi
+	khm.coeng_qu	khm.coeng khm.qu
+	khm.coeng_ry	khm.coeng khm.ry
+	khm.coeng_ryy	khm.coeng khm.ryy
+	khm.coeng_ly	khm.coeng khm.ly
+	khm.coeng_lyy	khm.coeng khm.lyy
+	khm.coeng_qae	khm.coeng khm.qae
+	
+//====================================================
+// VO STYLISTIC ALTERNATE GLYPH
+//====================================================
+
+Type			Noncontextual
+Name			Stylistic Alternates
+Namecode		17
+Setting			Use Alternate Vo
+Settingcode		2
+Default			no
+Orientation		HV
+Forward			yes
+Exclusive		no
+
+khm.vo			khm.vo_wide
+
+//====================================================
+// COENG DA STYLISTIC ALTERNATE GLYPH
+//====================================================
+
+Type			Noncontextual
+Name			Stylistic Alternates
+Namecode		17
+Setting			Use Alternate Subscript Da
+Settingcode		4
+Default			no
+Orientation		HV
+Forward			yes
+Exclusive		no
+
+khm.coeng_da	khm.coeng_da_old
+
+
+//====================================================
+// CONTEXTUAL COENG NYO AND NNA SUBSTITUTION
+//====================================================
+// Substitutes Subscript Nyo by alternate glyph if
+// Letter Nyo is preceding.
+//====================================================
+
+Type			Contextual
+Name			NULL
+Namecode		16002
+Setting			NULL
+Settingcode		0
+Default			yes
+Orientation		HV
+Forward			yes
+Exclusive		no
+
+Nyo			khm.nyo khm.nyo2
+Nna			khm.nna
+Ignores		khm.muusekatoan khm.treisap ZWJ ZWNJ
+NyoCoeng	khm.coeng_nyo
+NnaCoeng	khm.coeng_nna
+
+				EOT	OOB	DEL	EOL	Nyo		Nna		Ignores		NyoCoeng	NnaCoeng
+StartText		1	1	1	1	2		4		1			1			1
+StartLine		1	1	1	1	2		4		1			1			1
+SeenNyo			1	1	2	1	2		4		2			3			2
+SeenNna			1	1	4	1	2		4		4			4			5
+
+	GoTo			Mark?	Advance?	SubstMark	SubstCurrent
+1	StartText		no		yes			none        none
+2	SeenNyo			no		yes			none		none
+3	StartText		no		yes			none		NyoCoengAlt
+4	SeenNna			no		yes			none		none
+5	StartText		no		yes			none		NnaCoengAlt
+
+NyoCoengAlt
+	khm.coeng_nyo	khm.coeng_nyo2
+	
+NnaCoengAlt
+	khm.coeng_nna	khm.coeng_nna2
+	
+//====================================================
+// CONTEXTUAL NYO SUBSTITUTION
+//====================================================
+// Replaces Letter Nyo by alternate glyph without
+// subscript curl if coeng is added.
+// Also replaces Qu-Likes.
+//====================================================
+
+Type			Contextual
+Name			NULL
+Namecode		16003
+Setting			NULL
+Settingcode		0
+Default			yes
+Orientation		HV
+Forward			yes
+Exclusive		no
+
+Nyo			khm.nyo
+Qu			khm.qu khm.quk khm.quu khm.quv khm.qoo khm.qauv
+Ignores		khm.muusekatoan khm.treisap ZWJ ZWNJ
+ConsCoeng	khm.coeng
++			khm.coeng_ka khm.coeng_kha khm.coeng_ko khm.coeng_ngo
++			khm.coeng_ca khm.coeng_cha khm.coeng_co khm.coeng_nyo khm.coeng_nyo2
++			khm.coeng_da khm.coeng_da_old khm.coeng_ttha khm.coeng_do khm.coeng_nna
++			khm.coeng_ta khm.coeng_tha khm.coeng_to khm.coeng_tho khm.coeng_no
++			khm.coeng_pha khm.coeng_po khm.coeng_pho khm.coeng_mo
++			khm.coeng_lo khm.coeng_vo khm.coeng_sha khm.coeng_ha khm.coeng_qa
++			khm.coeng_kho khm.coeng_cho khm.coeng_ttho
++			khm.coeng_ba khm.coeng_sso khm.coeng_sa khm.coeng_la
++			khm.coeng_yo khm.coeng_ro
++			khm.coeng_qi khm.coeng_qu khm.coeng_ry khm.coeng_ryy khm.coeng_ly khm.coeng_lyy khm.coeng_qae
+VowelU		khm.u khm.uu khm.ua
+
+				EOT	OOB	DEL	EOL	Nyo		Qu		Ignores	ConsCoeng	VowelU
+StartText		1	1	1	1	2		3		1		1			1
+StartLine		1	1	1	1	2		3		1		1			1
+SeenNyo			1	1	4	1	2		3		4		6			1
+SeenQu			1	1	5	1	2		3		5		6			6
+
+	GoTo			Mark?	Advance?	SubstMark	SubstCurrent
+1	StartText		no		yes			none        none
+2	SeenNyo			yes		yes			none		none
+3	SeenQu			yes		yes			none		none
+4	SeenNyo			no		yes			none		none
+5	SeenQu			no		yes			none		none
+6	StartText		no		yes			NyoQuAlt	none
+
+NyoQuAlt
+	khm.nyo		khm.nyo2
+	khm.qu		khm.qu_short
+	khm.quk		khm.quk_short
+	khm.quu		khm.quu_short
+	khm.quv		khm.quv_short
+	khm.qoo		khm.qoo_short
+	khm.qauv	khm.qauv_short
+	
+//====================================================
+// CONTEXTUAL LIGATURES BEFORE REARRANGEMENT
+//====================================================
+// Substitutes Subscript Consonants etc by alternate
+// glyphs if other Subscript Consonant is preceding
+// making the second one switch to second level.
+//====================================================
+
+Type			Contextual
+Name			NULL
+Namecode		16004
+Setting			NULL
+Settingcode		0
+Default			yes
+Orientation		HV
+Forward			yes
+Exclusive		no
+
+ConsW		khm.kho khm.cho khm.nyo2 khm.ttho khm.nna khm.yo khm.lo khm.sa khm.ha
+LaIndVw		khm.la khm.ry khm.ryy khm.ly khm.lyy khm.coeng_nna2
+ConsCoeng	khm.coeng_ka khm.coeng_kha khm.coeng_ko khm.coeng_ngo
++			khm.coeng_ca khm.coeng_cha khm.coeng_co khm.coeng_nyo khm.coeng_nyo2
++			khm.coeng_da khm.coeng_da_old khm.coeng_ttha khm.coeng_do khm.coeng_nna
++			khm.coeng_ta khm.coeng_tha khm.coeng_to khm.coeng_tho khm.coeng_no
++			khm.coeng_pha khm.coeng_po khm.coeng_pho khm.coeng_mo
++			khm.coeng_lo khm.coeng_vo khm.coeng_sha khm.coeng_ha khm.coeng_qa
++			khm.coeng_kho khm.coeng_cho khm.coeng_ttho
++			khm.coeng_ba khm.coeng_sso khm.coeng_sa khm.coeng_la
++			khm.coeng_qi khm.coeng_qu khm.coeng_ry khm.coeng_ryy khm.coeng_ly khm.coeng_lyy khm.coeng_qae
+ConsCoengYo	khm.coeng_yo
+ConsCoengRo	khm.coeng_ro	
+Ignores		khm.muusekatoan khm.treisap khm.robat khm.e khm.ae khm.ai khm.oe khm.i khm.ii khm.y khm.yy ZWJ ZWNJ
+	
+				EOT	OOB	DEL	EOL	ConsW		LaIndVw		ConsCoeng	ConsCoengYo ConsCoengRo	Ignores
+StartText		1	1	1	1	2			3			3			3			4			1
+StartLine		1	1	1	1	2			3			3			3			4			1
+SeenConsW		1	1	2	1	2			3			5			5			6			2
+SeenConsCoeng	1	1	3	1	2			3			7			7			8			3
+SeenConsRo		1	1	4	1	2			3			7			4			8			4
+SeenConsWCoeng	1	1	5	1	2			3			10			10			10			5
+SeenConsWRo		1	1	6	1	2			3			9			9			11			6
+SeenConsWRoCng	1	1	9	1	2			3			10			10			11			9
+
+	GoTo			Mark?	Advance?	SubstMark	SubstCurrent
+1	StartText		no		yes			none        none
+2	SeenConsW		no		yes			none		none
+3	SeenConsCoeng	no		yes			none		none
+4	SeenConsRo		no		yes			none		none
+5	SeenConsWCoeng	no		yes			none		none
+6	SeenConsWRo		no		yes			none		none
+7	SeenConsCoeng	no		yes			none		SubCoeng
+8	SeenConsCoeng	no		yes			none		SubCoengRo
+9	SeenConsWRoCng	no		yes			none		none
+10	SeenConsWRoCng	no		yes			none		SubCoeng
+11	SeenConsWRoCng	no		yes			none		SubCoengRo
+
+SubCoeng
+	khm.coeng_ka		khm.coeng_ka_alt
+	khm.coeng_kha		khm.coeng_kha_alt
+	khm.coeng_ko		khm.coeng_ko_alt
+	khm.coeng_kho		khm.coeng_kho_alt
+	khm.coeng_ngo		khm.coeng_ngo_alt
+	khm.coeng_ca		khm.coeng_ca_alt
+	khm.coeng_cha		khm.coeng_cha_alt
+	khm.coeng_co		khm.coeng_co_alt
+	khm.coeng_cho		khm.coeng_cho_alt
+	khm.coeng_nyo		khm.coeng_nyo_alt
+	khm.coeng_nyo2		khm.coeng_nyo2_alt
+	khm.coeng_da		khm.coeng_da_alt
+	khm.coeng_da_old	khm.coeng_da_old_alt
+	khm.coeng_ttha		khm.coeng_ttha_alt
+	khm.coeng_do		khm.coeng_do_alt
+	khm.coeng_ttho		khm.coeng_ttho_alt
+	khm.coeng_nna		khm.coeng_nna_alt
+	khm.coeng_nna2		khm.coeng_nna2_alt
+	khm.coeng_ta		khm.coeng_ta_alt
+	khm.coeng_tha		khm.coeng_tha_alt
+	khm.coeng_to		khm.coeng_to_alt
+	khm.coeng_tho		khm.coeng_tho_alt
+	khm.coeng_no		khm.coeng_no_alt
+	khm.coeng_ba		khm.coeng_ba_alt
+	khm.coeng_pha		khm.coeng_pha_alt
+	khm.coeng_po		khm.coeng_po_alt
+	khm.coeng_pho		khm.coeng_pho_alt
+	khm.coeng_mo		khm.coeng_mo_alt
+	khm.coeng_yo		khm.coeng_yo_alt
+	khm.coeng_lo		khm.coeng_lo_alt
+	khm.coeng_vo		khm.coeng_vo_alt
+	khm.coeng_sha		khm.coeng_sha_alt
+	khm.coeng_sso		khm.coeng_sso_alt
+	khm.coeng_sa		khm.coeng_sa_alt
+	khm.coeng_ha		khm.coeng_ha_alt
+	khm.coeng_la		khm.coeng_la_alt
+	khm.coeng_qa		khm.coeng_qa_alt
+	khm.coeng_qi		khm.coeng_qi_alt
+	khm.coeng_qu		khm.coeng_qu_alt
+	khm.coeng_ry		khm.coeng_ry_alt
+	khm.coeng_ryy		khm.coeng_ryy_alt
+	khm.coeng_ly		khm.coeng_ly_alt
+	khm.coeng_lyy		khm.coeng_lyy_alt
+	khm.coeng_qae		khm.coeng_qae_alt
+	
+SubCoengRo
+	khm.coeng_ro		khm.coeng_ro_alt
+	
+//====================================================
+// VOWEL INSERTION
+//====================================================
+// Inserts second part of enclosing Vowels Sign.
+//====================================================
+
+Type			Insertion
+Name			NULL
+Namecode		16005
+Setting			NULL
+Settingcode		0
+Default			yes
+Orientation		HV
+Forward			yes
+Exclusive		no
+
+Cons			khm.ka khm.kha khm.ko khm.kho khm.ngo
++				khm.ca khm.cha khm.co khm.cho khm.nyo khm.nyo2
++				khm.da khm.ttha khm.do khm.ttho khm.nna
++				khm.ta khm.tha khm.to khm.tho khm.no
++				khm.ba khm.pha khm.po khm.pho khm.mo
++				khm.yo khm.ro khm.lo khm.vo khm.vo_wide khm.sha khm.sso khm.sa khm.ha khm.la khm.qa
+Ignores			khm.coeng_ka khm.coeng_kha khm.coeng_ko khm.coeng_kho khm.coeng_ngo
++				khm.coeng_ca khm.coeng_cha khm.coeng_co khm.coeng_cho khm.coeng_nyo khm.coeng_nyo2
++				khm.coeng_da khm.coeng_da_old khm.coeng_ttha khm.coeng_do khm.coeng_ttho khm.coeng_nna khm.coeng_nna2
++				khm.coeng_ta khm.coeng_tha khm.coeng_to khm.coeng_tho khm.coeng_no
++				khm.coeng_ba khm.coeng_pha khm.coeng_po khm.coeng_pho khm.coeng_mo
++				khm.coeng_yo khm.coeng_ro khm.coeng_lo khm.coeng_vo
++				khm.coeng_sha khm.coeng_sso khm.coeng_sa khm.coeng_ha khm.coeng_la khm.coeng_qa
++				khm.coeng_ka_alt khm.coeng_kha_alt khm.coeng_ko_alt khm.coeng_kho_alt khm.coeng_ngo_alt
++				khm.coeng_ca_alt khm.coeng_cha_alt khm.coeng_co_alt khm.coeng_cho_alt khm.coeng_nyo_alt khm.coeng_nyo2_alt
++				khm.coeng_da_alt khm.coeng_da_old_alt khm.coeng_ttha_alt khm.coeng_do_alt khm.coeng_ttho_alt khm.coeng_nna_alt khm.coeng_nna2_alt
++				khm.coeng_ta_alt khm.coeng_tha_alt khm.coeng_to_alt khm.coeng_tho_alt khm.coeng_no_alt
++				khm.coeng_ba_alt khm.coeng_pha_alt khm.coeng_po_alt khm.coeng_pho_alt khm.coeng_mo_alt
++				khm.coeng_yo_alt khm.coeng_ro_alt khm.coeng_lo_alt khm.coeng_vo_alt
++				khm.coeng_sha_alt khm.coeng_sso_alt khm.coeng_sa_alt khm.coeng_ha_alt khm.coeng_la_alt khm.coeng_qa_alt
++				khm.muusekatoan khm.treisap khm.robat ZWJ ZWNJ
+VowelOo			khm.oo
+VowelAu			khm.au
+VowelOe			khm.oe
+VowelYa			khm.ya
+VowelIe			khm.ie
+
+				EOT	OOB	DEL	EOL Cons	Ignores	VowelOo	VowelAu	VowelOe	VowelYa	VowelIe
+StartText		1	1	1	1	2		1		1		1		1		1		1
+StartLine		1	1	1	1	2		1		1		1		1		1		1
+SeenCons		1	1	2	1	2		2		3		4		5		6		7
+
+   GoTo			Mark?	Advance?	InsertMark	InsertCurrent
+1  StartText	no		yes			none		none
+2  SeenCons		yes		yes			none		none
+3  StartText	no		yes			none		InsertOo
+4  StartText	no		yes			none		InsertAu
+5  StartText	no		yes			none		InsertOe
+6  StartText	no		yes			none		InsertYa
+7  StartText	no		yes			none		InsertIe
+
+InsertOo
+	IsKashidaLike  no
+	InsertBefore   no
+	Glyphs         khm.aa
+
+InsertAu
+	IsKashidaLike  no
+	InsertBefore   no
+	Glyphs         khm.au_isol
+	
+InsertOe
+	IsKashidaLike  yes
+	InsertBefore   no
+	Glyphs         khm.ii
+	
+InsertYa
+	IsKashidaLike  yes
+	InsertBefore   no
+	Glyphs         khm.ya_isol
+	
+InsertIe
+	IsKashidaLike  yes
+	InsertBefore   no
+	Glyphs         khm.ie_isol
+	
+//====================================================
+// VOWEL REPLACEMENT
+//====================================================
+// Substitutes enclosing Vowel Sign by preceding
+// element.
+//====================================================
+
+Type			Contextual
+Name			NULL
+Namecode		16006
+Setting			NULL
+Settingcode		0
+Default			yes
+Orientation		HV
+Forward			yes
+Exclusive		no
+
+Cons			khm.ka khm.kha khm.ko khm.kho khm.ngo
++				khm.ca khm.cha khm.co khm.cho khm.nyo khm.nyo2
++				khm.da khm.ttha khm.do khm.ttho khm.nna
++				khm.ta khm.tha khm.to khm.tho khm.no
++				khm.ba khm.pha khm.po khm.pho khm.mo
++				khm.yo khm.ro khm.lo khm.vo khm.vo_wide khm.sha khm.sso khm.sa khm.ha khm.la khm.qa
+Ignores			khm.coeng_ka khm.coeng_kha khm.coeng_ko khm.coeng_kho khm.coeng_ngo
++				khm.coeng_ca khm.coeng_cha khm.coeng_co khm.coeng_cho khm.coeng_nyo khm.coeng_nyo2
++				khm.coeng_da khm.coeng_da_old khm.coeng_ttha khm.coeng_do khm.coeng_ttho khm.coeng_nna khm.coeng_nna2
++				khm.coeng_ta khm.coeng_tha khm.coeng_to khm.coeng_tho khm.coeng_no
++				khm.coeng_ba khm.coeng_pha khm.coeng_po khm.coeng_pho khm.coeng_mo
++				khm.coeng_yo khm.coeng_ro khm.coeng_lo khm.coeng_vo
++				khm.coeng_sha khm.coeng_sso khm.coeng_sa khm.coeng_ha khm.coeng_la khm.coeng_qa
++				khm.coeng_ka_alt khm.coeng_kha_alt khm.coeng_ko_alt khm.coeng_kho_alt khm.coeng_ngo_alt
++				khm.coeng_ca_alt khm.coeng_cha_alt khm.coeng_co_alt khm.coeng_cho_alt khm.coeng_nyo_alt khm.coeng_nyo2_alt
++				khm.coeng_da_alt khm.coeng_da_old_alt khm.coeng_ttha_alt khm.coeng_do_alt khm.coeng_ttho_alt khm.coeng_nna_alt khm.coeng_nna2_alt
++				khm.coeng_ta_alt khm.coeng_tha_alt khm.coeng_to_alt khm.coeng_tho_alt khm.coeng_no_alt
++				khm.coeng_ba_alt khm.coeng_pha_alt khm.coeng_po_alt khm.coeng_pho_alt khm.coeng_mo_alt
++				khm.coeng_yo_alt khm.coeng_ro_alt khm.coeng_lo_alt khm.coeng_vo_alt
++				khm.coeng_sha_alt khm.coeng_sso_alt khm.coeng_sa_alt khm.coeng_ha_alt khm.coeng_la_alt khm.coeng_qa_alt
++				khm.muusekatoan khm.treisap khm.robat ZWJ ZWNJ
+VowelOo			khm.oe khm.ya khm.ie khm.oo khm.au
+
+				EOT	OOB	DEL	EOL	Cons	Ignores	VowelOo
+StartText		1	1	1	1	2		1		1
+StartLine		1	1	1	1	2		1		1
+SeenCons		1	1	2	1	2		2		3
+
+	GoTo			Mark?	Advance?	SubstMark	SubstCurrent
+1	StartText		no		yes			none        none
+2	SeenCons		no		yes			none		none
+3	StartText		no		yes			none		VowelE
+
+VowelE
+	khm.oe	khm.e
+	khm.ya	khm.e
+	khm.ie	khm.e
+	khm.oo	khm.e
+	khm.au	khm.e
+	
+//====================================================
+// VOWEL E REARRANGEMENT
+//====================================================
+// Rearranges Vowel E before main consonant of
+// syllable.
+//====================================================
+
+Type			Rearrangement
+Name			NULL
+Namecode		16007
+Setting			NULL
+Settingcode		0
+Default			yes
+Orientation		HV
+Forward			yes
+Exclusive		no
+
+Cons		khm.ka khm.kha khm.ko khm.kho khm.ngo
++			khm.ca khm.cha khm.co khm.cho khm.nyo khm.nyo2
++			khm.da khm.ttha khm.do khm.ttho khm.nna
++			khm.ta khm.tha khm.to khm.tho khm.no
++			khm.ba khm.pha khm.po khm.pho khm.mo
++			khm.yo khm.ro khm.lo khm.vo khm.vo_wide khm.sha khm.sso khm.sa khm.ha khm.la khm.qa
+Ignores		khm.coeng_ka khm.coeng_kha khm.coeng_ko khm.coeng_kho khm.coeng_ngo
++			khm.coeng_ca khm.coeng_cha khm.coeng_co khm.coeng_cho khm.coeng_nyo khm.coeng_nyo2
++			khm.coeng_da khm.coeng_da_old khm.coeng_ttha khm.coeng_do khm.coeng_ttho khm.coeng_nna khm.coeng_nna2
++			khm.coeng_ta khm.coeng_tha khm.coeng_to khm.coeng_tho khm.coeng_no
++			khm.coeng_ba khm.coeng_pha khm.coeng_po khm.coeng_pho khm.coeng_mo
++			khm.coeng_yo khm.coeng_ro khm.coeng_lo khm.coeng_vo
++			khm.coeng_sha khm.coeng_sso khm.coeng_sa khm.coeng_ha khm.coeng_la khm.coeng_qa
++			khm.coeng_ka_alt khm.coeng_kha_alt khm.coeng_ko_alt khm.coeng_kho_alt khm.coeng_ngo_alt
++			khm.coeng_ca_alt khm.coeng_cha_alt khm.coeng_co_alt khm.coeng_cho_alt khm.coeng_nyo_alt khm.coeng_nyo2_alt
++			khm.coeng_da_alt khm.coeng_da_old_alt khm.coeng_ttha_alt khm.coeng_do_alt khm.coeng_ttho_alt khm.coeng_nna_alt khm.coeng_nna2_alt
++			khm.coeng_ta_alt khm.coeng_tha_alt khm.coeng_to_alt khm.coeng_tho_alt khm.coeng_no_alt
++			khm.coeng_ba_alt khm.coeng_pha_alt khm.coeng_po_alt khm.coeng_pho_alt khm.coeng_mo_alt
++			khm.coeng_yo_alt khm.coeng_ro_alt khm.coeng_lo_alt khm.coeng_vo_alt
++			khm.coeng_sha_alt khm.coeng_sso_alt khm.coeng_sa_alt khm.coeng_ha_alt khm.coeng_la_alt khm.coeng_qa_alt
++			khm.muusekatoan khm.treisap khm.robat khm.reahmuk khm.yukaleakpintu ZWJ ZWNJ
+VowelE		khm.e khm.ae khm.ai
+
+			EOT	OOB	DEL	EOL	Cons	Ignores	VowelE
+StartText	1	1	1	1	2		1		1
+StartLine	1	1	1	1	2		1		1
+SeenCons	1	1	3	1	2		3		4
+
+	GoTo          	MarkFirst?	MarkLast?	Advance?	DoThis
+1	StartText		no			no			yes			none
+2	SeenCons		yes			no			yes			none
+3	SeenCons		no			no			yes			none
+4	StartText		no			yes			yes			xD->Dx
+
+//====================================================
+// VOWEL AA REARRANGEMENT
+//====================================================
+// Rearranges Vowel Aa etc after main consonant of
+// syllable.
+//====================================================
+
+Type			Rearrangement
+Name			NULL
+Namecode		16008
+Setting			NULL
+Settingcode		0
+Default			yes
+Orientation		HV
+Forward			yes
+Exclusive		no
+
+CoengCons	khm.coeng_ka khm.coeng_kha khm.coeng_ko khm.coeng_ngo
++			khm.coeng_ca khm.coeng_cha khm.coeng_co khm.coeng_nyo khm.coeng_nyo2
++			khm.coeng_da khm.coeng_da_old khm.coeng_ttha khm.coeng_do khm.coeng_nna khm.coeng_nna2
++			khm.coeng_ta khm.coeng_tha khm.coeng_to khm.coeng_tho khm.coeng_no
++			khm.coeng_pha khm.coeng_po khm.coeng_pho khm.coeng_mo
++			khm.coeng_ro khm.coeng_lo khm.coeng_vo khm.coeng_sha khm.coeng_ha khm.coeng_qa
++			khm.coeng_ka_alt khm.coeng_kha_alt khm.coeng_ko_alt khm.coeng_ngo_alt
++			khm.coeng_ca_alt khm.coeng_cha_alt khm.coeng_co_alt khm.coeng_nyo_alt khm.coeng_nyo2_alt
++			khm.coeng_da_alt khm.coeng_da_old_alt khm.coeng_ttha_alt khm.coeng_do_alt khm.coeng_nna_alt khm.coeng_nna2_alt
++			khm.coeng_ta_alt khm.coeng_tha_alt khm.coeng_to_alt khm.coeng_tho_alt khm.coeng_no_alt
++			khm.coeng_pha_alt khm.coeng_po_alt khm.coeng_pho_alt khm.coeng_mo_alt
++			khm.coeng_ro_alt khm.coeng_lo_alt khm.coeng_vo_alt khm.coeng_sha_alt khm.coeng_ha_alt khm.coeng_qa_alt
+Ignores		khm.muusekatoan khm.treisap khm.robat ZWJ ZWNJ
+VowelAa		khm.aa khm.au_isol
+
+			EOT	OOB	DEL	EOL	CoengCons	Ignores		VowelAa
+StartText	1	1	1	1	2			1			1
+StartLine	1	1	1	1	2			1			1
+SeenCons	1	1	3	1	3			3			4
+
+	GoTo          	MarkFirst?	MarkLast?	Advance?	DoThis
+1	StartText		no			no			yes			none
+2	SeenCons		yes			no			yes			none
+3	SeenCons		no			no			yes			none
+4	StartText		no			yes			yes			xD->Dx
+
+//====================================================
+// CONTEXTUAL TREISAP SUBSTITUTION
+//====================================================
+// Substitutes Treisap plus Vowel I etc by alternate
+// glyph.
+//====================================================
+
+Type			Contextual
+Name			NULL
+Namecode		16009
+Setting			NULL
+Settingcode		0
+Default			yes
+Orientation		HV
+Forward			yes
+Exclusive		no
+
+ConsBaLo	khm.ba khm.coeng_lo khm.coeng_lo_alt
+Ignores		khm.coeng_ka khm.coeng_kha khm.coeng_ko khm.coeng_ngo
++			khm.coeng_ca khm.coeng_cha khm.coeng_co khm.coeng_nyo khm.coeng_nyo2
++			khm.coeng_da khm.coeng_da_old khm.coeng_ttha khm.coeng_do khm.coeng_nna khm.coeng_nna2
++			khm.coeng_ta khm.coeng_tha khm.coeng_to khm.coeng_tho khm.coeng_no
++			khm.coeng_ba khm.coeng_pha khm.coeng_po khm.coeng_pho khm.coeng_mo
++			khm.coeng_vo khm.coeng_sha khm.coeng_ha khm.coeng_qa
++			khm.coeng_ka_alt khm.coeng_kha_alt khm.coeng_ko_alt khm.coeng_ngo_alt
++			khm.coeng_ca_alt khm.coeng_cha_alt khm.coeng_co_alt khm.coeng_nyo_alt khm.coeng_nyo2_alt
++			khm.coeng_da_alt khm.coeng_da_old_alt khm.coeng_ttha_alt khm.coeng_do_alt khm.coeng_nna_alt khm.coeng_nna2_alt
++			khm.coeng_ta_alt khm.coeng_tha_alt khm.coeng_to_alt khm.coeng_tho_alt khm.coeng_no_alt
++			khm.coeng_ba_alt khm.coeng_pha_alt khm.coeng_po_alt khm.coeng_pho_alt khm.coeng_mo_alt
++			khm.coeng_vo_alt khm.coeng_sha_alt khm.coeng_ha_alt khm.coeng_qa_alt
++			khm.aa khm.au_isol khm.ya_isol khm.ie_isol khm.robat ZWJ
+Muusekatoan	khm.muusekatoan
+Treisap		khm.treisap
+VowelHead	khm.i khm.ii khm.y khm.yy khm.nikahit
+
+				EOT	OOB	DEL	EOL	ConsBaLo	Ignores		Muusekatoan	Treisap		VowelHead
+StartText		1	1	1	1	2			1			3			3			1
+StartLine		1	1	1	1	2			1			3			3			1
+SeenConsBaLo	1	1	2	1	2			2			3			1			1
+SeenShiftReg	1	1	4	1	2			3			3			3			5
+
+	GoTo			Mark?	Advance?	SubstMark	SubstCurrent
+1	StartText		no		yes			none        none
+2	SeenConsBaLo	no		yes			none		none
+3	SeenShiftReg	yes		yes			none		none
+4	SeenShiftReg	no		yes			none		none
+5	StartText		no		yes			ShiftReg	none
+
+ShiftReg
+	khm.muusekatoan	khm.u
+	khm.treisap		khm.u
+
+//====================================================
+// CONTEXTUAL BOTTOM MARK POSITIONING
+//====================================================
+
+Type			Contextual
+Name			NULL
+Namecode		16010
+Setting			NULL
+Settingcode		0
+Default			yes
+Orientation		HV
+Forward			yes
+Exclusive		no
+
+ConsW		khm.kho khm.cho khm.nyo2 khm.ttho khm.nna khm.yo khm.lo khm.sa khm.ha
+LaNyo		khm.la khm.nyo
+CoengRo		khm.coeng_ro khm.coeng_ro_alt
+ConsCoeng	khm.coeng_ka khm.coeng_kha khm.coeng_ko khm.coeng_ngo
++			khm.coeng_ca khm.coeng_cha khm.coeng_co khm.coeng_nyo
++			khm.coeng_da khm.coeng_da_old khm.coeng_ttha khm.coeng_do khm.coeng_nna khm.coeng_nna2
++			khm.coeng_ta khm.coeng_tha khm.coeng_to khm.coeng_tho khm.coeng_no
++			khm.coeng_pha khm.coeng_po khm.coeng_pho khm.coeng_mo
++			khm.coeng_lo khm.coeng_vo khm.coeng_sha khm.coeng_ha khm.coeng_qa
++			khm.coeng_kho khm.coeng_cho khm.coeng_ttho
++			khm.coeng_ba khm.coeng_yo khm.coeng_sso khm.coeng_sa khm.coeng_la
+VowelYaSub	khm.ya_isol khm.ie_isol
+VowelUSub	khm.u
+VowelUuSub	khm.uu khm.ua
+Ignores		khm.muusekatoan khm.treisap khm.robat khm.aa khm.au_isol khm.e khm.ae khm.ai khm.oe khm.i khm.ii khm.y khm.yy ZWJ ZWNJ
+	
+				EOT	OOB	DEL	EOL	ConsW	LaNyo	CoengRo	ConsCoeng	VowelYaSub	VowelUSub	VowelUuSub	Ignores
+StartText		1	1	1	1	2		4		3		4			1			1			1			1
+StartLine		1	1	1	1	2		4		3		4			1			1			1			1
+SeenConsW		1	1	2	1	2		4		2		4			1			1			1			2
+SeenCoengRo		1	1	3	1	2		4		3		4			1			1			5			3
+SeenConsCoeng	1	1	4	1	2		4		4		4			6			5			5			4
+SeenYaSub		1	1	1	1	2		4		3		4			1			5			1			1
+
+	GoTo			Mark?	Advance?	SubstMark	SubstCurrent
+1	StartText		no		yes			none        none
+2	SeenConsW		no		yes			none		none
+3	SeenCoengRo		no		yes			none		none
+4	SeenConsCoeng	no		yes			none		none
+5	SeenConsCoeng	no		yes			none		SubUYa
+6	SeenYaSub		no		yes			none		SubUYa
+
+
+SubUYa
+	khm.u			khm.u_alt
+	khm.uu			khm.uu_alt
+	khm.ua			khm.ua_alt
+	khm.ya_isol		khm.ya_alt
+	khm.ie_isol		khm.ie_alt
+	
+//====================================================
+
+Type			Contextual
+Name			NULL
+Namecode		16011
+Setting			NULL
+Settingcode		0
+Default			yes
+Orientation		HV
+Forward			yes
+Exclusive		no
+
+CoengAlt	khm.coeng_ka_alt khm.coeng_kha_alt khm.coeng_ko_alt khm.coeng_ngo_alt
++			khm.coeng_ca_alt khm.coeng_cha_alt khm.coeng_co_alt khm.coeng_nyo_alt khm.coeng_nyo2_alt
++			khm.coeng_da_alt khm.coeng_da_old_alt khm.coeng_ttha_alt khm.coeng_do_alt khm.coeng_nna_alt khm.coeng_nna2_alt
++			khm.coeng_ta_alt khm.coeng_tha_alt khm.coeng_to_alt khm.coeng_tho_alt khm.coeng_no_alt
++			khm.coeng_pha_alt khm.coeng_po_alt khm.coeng_pho_alt khm.coeng_mo_alt
++			khm.coeng_lo_alt khm.coeng_vo_alt khm.coeng_sha_alt khm.coeng_ha_alt khm.coeng_qa_alt
++			khm.coeng_nyo2
+VowelUUuSub	khm.u khm.uu khm.ua khm.u_alt khm.uu_alt khm.ua_alt
+Ignores		khm.muusekatoan khm.treisap khm.robat khm.aa khm.au_isol khm.ya_isol khm.ie_isol khm.ya_alt khm.ie_alt ZWJ ZWNJ
+	
+				EOT	OOB	DEL	EOL	CoengAlt	VowelUUuSub	Ignores
+StartText		1	1	1	1	2			1			1
+StartLine		1	1	1	1	2			1			1
+SeenCoengAlt	1	1	2	1	2			3			2
+
+	GoTo			Mark?	Advance?	SubstMark	SubstCurrent
+1	StartText		no		yes			none        none
+2	SeenCoengAlt	no		yes			none		none
+3	SeenCoengAlt	no		yes			none		SsubU
+
+SsubU
+	khm.u			khm.u_aalt
+	khm.uu			khm.uu_aalt
+	khm.ua			khm.ua_aalt
+	khm.u_alt		khm.u_aalt
+	khm.uu_alt		khm.uu_aalt
+	khm.ua_alt		khm.ua_aalt
+		
+//====================================================
+// COENG RO REARRANGEMENT
+//====================================================
+// Rearranges Subscript Ro before main consonant of
+// syllable.
+//====================================================
+
+Type			Rearrangement
+Name			NULL
+Namecode		16012
+Setting			NULL
+Settingcode		0
+Default			yes
+Orientation		HV
+Forward			yes
+Exclusive		no
+
+Cons		khm.ka khm.kha khm.ko khm.kho khm.ngo
++			khm.ca khm.cha khm.co khm.cho khm.nyo khm.nyo2
++			khm.da khm.ttha khm.do khm.ttho khm.nna
++			khm.ta khm.tha khm.to khm.tho khm.no
++			khm.ba khm.pha khm.po khm.pho khm.mo
++			khm.yo khm.ro khm.lo khm.vo khm.vo_wide khm.sha khm.sso khm.sa khm.ha khm.la khm.qa
+Ignores		khm.coeng_ka khm.coeng_kha khm.coeng_ko khm.coeng_kho khm.coeng_ngo
++			khm.coeng_ca khm.coeng_cha khm.coeng_co khm.coeng_cho khm.coeng_nyo khm.coeng_nyo2
++			khm.coeng_da khm.coeng_da_old khm.coeng_ttha khm.coeng_do khm.coeng_ttho khm.coeng_nna khm.coeng_nna2
++			khm.coeng_ta khm.coeng_tha khm.coeng_to khm.coeng_tho khm.coeng_no
++			khm.coeng_ba khm.coeng_pha khm.coeng_po khm.coeng_pho khm.coeng_mo
++			khm.coeng_yo khm.coeng_lo khm.coeng_vo
++			khm.coeng_sha khm.coeng_sso khm.coeng_sa khm.coeng_ha khm.coeng_la khm.coeng_qa
++			khm.coeng_qi khm.coeng_qu khm.coeng_ry khm.coeng_ryy khm.coeng_ly khm.coeng_lyy khm.coeng_qae
++			khm.coeng_ka_alt khm.coeng_kha_alt khm.coeng_ko_alt khm.coeng_kho_alt khm.coeng_ngo_alt
++			khm.coeng_ca_alt khm.coeng_cha_alt khm.coeng_co_alt khm.coeng_cho_alt khm.coeng_nyo_alt khm.coeng_nyo2_alt
++			khm.coeng_da_alt khm.coeng_da_old_alt khm.coeng_ttha_alt khm.coeng_do_alt khm.coeng_ttho_alt khm.coeng_nna_alt khm.coeng_nna2_alt
++			khm.coeng_ta_alt khm.coeng_tha_alt khm.coeng_to_alt khm.coeng_tho_alt khm.coeng_no_alt
++			khm.coeng_ba_alt khm.coeng_pha_alt khm.coeng_po_alt khm.coeng_pho_alt khm.coeng_mo_alt
++			khm.coeng_yo_alt khm.coeng_lo_alt khm.coeng_vo_alt
++			khm.coeng_sha_alt khm.coeng_sso_alt khm.coeng_sa_alt khm.coeng_ha_alt khm.coeng_la_alt khm.coeng_qa_alt
++			khm.coeng_qi_alt khm.coeng_qu_alt khm.coeng_ry_alt khm.coeng_ryy_alt khm.coeng_ly_alt khm.coeng_lyy_alt khm.coeng_qae_alt
++			khm.muusekatoan khm.treisap khm.aa khm.au_isol khm.robat ZWJ ZWNJ
+CoengRo		khm.coeng_ro khm.coeng_ro_alt
+
+			EOT	OOB	DEL	EOL	Cons	Ignores	CoengRo
+StartText	1	1	1	1	2		1		1
+StartLine	1	1	1	1	2		1		1
+SeenCons	1	1	3	1	2		3		4
+
+	GoTo          	MarkFirst?	MarkLast?	Advance?	DoThis
+1	StartText		no			no			yes			none
+2	SeenCons		yes			no			yes			none
+3	SeenCons		no			no			yes			none
+4	StartText		no			yes			yes			xD->Dx
+
+//====================================================
+// LIGATURES AFTER REARRANGEMENT
+//====================================================
+// Substitutes Consonant plus Vowel Aa, Au, Oo by
+// Ligature.
+//====================================================
+
+Type			LigatureList
+Name			NULL
+Namecode		16013
+Setting			NULL
+Settingcode		0
+Default			yes
+Orientation		HV
+Forward			yes
+Exclusive		no
+
+Ignore
+	khm.treisap
+	khm.muusekatoan
+	khm.robat
+	khm.u
+	khm.u_alt
+	khm.u_aalt
+	ZWJ
+	ZWNJ
+
+List
+	khm.kaa			khm.ka khm.aa
+	khm.khaa		khm.kha khm.aa
+	khm.kie			khm.ko khm.aa
+	khm.khie		khm.kho khm.aa
+	khm.ngie		khm.ngo khm.aa
+	khm.caa			khm.ca khm.aa
+	khm.chaa		khm.cha khm.aa
+	khm.cie			khm.co khm.aa
+	khm.chie		khm.cho khm.aa
+	khm.nyie		khm.nyo khm.aa
+	khm.nyie2		khm.nyo2 khm.aa
+	khm.daa			khm.da khm.aa
+	khm.tthaa		khm.ttha khm.aa
+	khm.die			khm.do khm.aa
+	khm.tthie		khm.ttho khm.aa
+	khm.nnaa		khm.nna khm.aa
+	khm.taa			khm.ta khm.aa
+	khm.thaa		khm.tha khm.aa
+	khm.tie			khm.to khm.aa
+	khm.thie		khm.tho khm.aa
+	khm.nie			khm.no khm.aa
+	khm.baa			khm.ba khm.aa
+	khm.phaa		khm.pha khm.aa
+	khm.pie			khm.po khm.aa
+	khm.phie		khm.pho khm.aa
+	khm.mie			khm.mo khm.aa
+	khm.yie			khm.yo khm.aa
+	khm.rie			khm.ro khm.aa
+	khm.lie			khm.lo khm.aa
+	khm.vie			khm.vo khm.aa
+	khm.vie_wide	khm.vo_wide khm.aa
+	khm.shaa		khm.sha khm.aa
+	khm.ssie		khm.sso khm.aa
+	khm.saa			khm.sa khm.aa
+	khm.haa			khm.ha khm.aa
+	khm.laa			khm.la khm.aa
+	khm.qaa			khm.qa khm.aa
+
+	khm.coeng_khie	khm.coeng_kho khm.aa
+	khm.coeng_chie	khm.coeng_cho khm.aa
+	khm.coeng_tthie	khm.coeng_ttho khm.aa
+	khm.coeng_baa	khm.coeng_ba khm.aa
+	khm.coeng_yie	khm.coeng_yo khm.aa
+	khm.coeng_ssie	khm.coeng_sso khm.aa
+	khm.coeng_saa	khm.coeng_sa khm.aa
+	khm.coeng_laa	khm.coeng_la khm.aa
+
+	khm.coeng_khie_alt	khm.coeng_kho_alt khm.aa
+	khm.coeng_chie_alt	khm.coeng_cho_alt khm.aa
+	khm.coeng_tthie_alt	khm.coeng_ttho_alt khm.aa
+	khm.coeng_baa_alt	khm.coeng_ba_alt khm.aa
+	khm.coeng_yie_alt	khm.coeng_yo_alt khm.aa
+	khm.coeng_ssie_alt	khm.coeng_sso_alt khm.aa
+	khm.coeng_saa_alt	khm.coeng_sa_alt khm.aa
+	khm.coeng_laa_alt	khm.coeng_la_alt khm.aa
+	
+	khm.kau			khm.ka khm.au_isol
+	khm.khau		khm.kha khm.au_isol
+	khm.kou			khm.ko khm.au_isol
+	khm.khou		khm.kho khm.au_isol
+	khm.ngou		khm.ngo khm.au_isol
+	khm.cau			khm.ca khm.au_isol
+	khm.chau		khm.cha khm.au_isol
+	khm.cou			khm.co khm.au_isol
+	khm.chou		khm.cho khm.au_isol
+	khm.nyou		khm.nyo khm.au_isol
+	khm.nyou2		khm.nyo2 khm.au_isol
+	khm.dau			khm.da khm.au_isol
+	khm.tthau		khm.ttha khm.au_isol
+	khm.dou			khm.do khm.au_isol
+	khm.tthou		khm.ttho khm.au_isol
+	khm.nnau		khm.nna khm.au_isol
+	khm.tau			khm.ta khm.au_isol
+	khm.thau		khm.tha khm.au_isol
+	khm.tou			khm.to khm.au_isol
+	khm.thou		khm.tho khm.au_isol
+	khm.nou			khm.no khm.au_isol
+	khm.bau			khm.ba khm.au_isol
+	khm.phau		khm.pha khm.au_isol
+	khm.pou			khm.po khm.au_isol
+	khm.phou		khm.pho khm.au_isol
+	khm.mou			khm.mo khm.au_isol
+	khm.you			khm.yo khm.au_isol
+	khm.rou			khm.ro khm.au_isol
+	khm.lou			khm.lo khm.au_isol
+	khm.vou			khm.vo khm.au_isol
+	khm.vou_wide	khm.vo_wide khm.au_isol
+	khm.shau		khm.sha khm.au_isol
+	khm.ssou		khm.sso khm.au_isol
+	khm.sau			khm.sa khm.au_isol
+	khm.hau			khm.ha khm.au_isol
+	khm.lau			khm.la khm.au_isol
+	khm.qau			khm.qa khm.au_isol
+
+	khm.coeng_khou	khm.coeng_kho khm.au_isol
+	khm.coeng_chou	khm.coeng_cho khm.au_isol
+	khm.coeng_tthou	khm.coeng_ttho khm.au_isol
+	khm.coeng_bau	khm.coeng_ba khm.au_isol
+	khm.coeng_you	khm.coeng_yo khm.au_isol
+	khm.coeng_ssou	khm.coeng_sso khm.au_isol
+	khm.coeng_sau	khm.coeng_sa khm.au_isol
+	khm.coeng_lau	khm.coeng_la khm.au_isol
+
+	khm.coeng_khou_alt	khm.coeng_kho_alt khm.au_isol
+	khm.coeng_chou_alt	khm.coeng_cho_alt khm.au_isol
+	khm.coeng_tthou_alt	khm.coeng_ttho_alt khm.au_isol
+	khm.coeng_bau_alt	khm.coeng_ba_alt khm.au_isol
+	khm.coeng_you_alt	khm.coeng_yo_alt khm.au_isol
+	khm.coeng_ssou_alt	khm.coeng_sso_alt khm.au_isol
+	khm.coeng_sau_alt	khm.coeng_sa_alt khm.au_isol
+	khm.coeng_lau_alt	khm.coeng_la_alt khm.au_isol
+	
+//====================================================
+// LIGATURES AFTER REARRANGEMENT
+//====================================================
+// Substitutes Top Marks by Ligatures.
+//====================================================
+
+Type			LigatureList
+Name			NULL
+Namecode		16014
+Setting			NULL
+Settingcode		0
+Default			yes
+Orientation		HV
+Forward			yes
+Exclusive		no
+
+List
+	khm.i_toan	khm.i khm.toandakhiat
+	
+//====================================================
+
+Type			Contextual
+Name			NULL
+Namecode		16015
+Setting			NULL
+Settingcode		0
+Default			yes
+Orientation		HV
+Forward			yes
+Exclusive		no
+
+ConsAsc		khm.ngo khm.co khm.da khm.ttha khm.tha khm.pha khm.vo
++			khm.cie khm.daa khm.tthaa khm.thaa khm.phaa khm.vie
+Ignores		khm.coeng_ka khm.coeng_kha khm.coeng_ko khm.coeng_ngo
++			khm.coeng_ca khm.coeng_cha khm.coeng_co khm.coeng_nyo khm.coeng_nyo2
++			khm.coeng_da khm.coeng_da_old khm.coeng_ttha khm.coeng_do khm.coeng_nna khm.coeng_nna2
++			khm.coeng_ta khm.coeng_tha khm.coeng_to khm.coeng_tho khm.coeng_no
++			khm.coeng_pha khm.coeng_po khm.coeng_pho khm.coeng_mo
++			khm.coeng_lo khm.coeng_vo khm.coeng_sha khm.coeng_ha khm.coeng_qa
++			khm.coeng_ka_alt khm.coeng_kha_alt khm.coeng_ko_alt khm.coeng_ngo_alt
++			khm.coeng_ca_alt khm.coeng_cha_alt khm.coeng_co_alt khm.coeng_nyo_alt khm.coeng_nyo2_alt
++			khm.coeng_da_alt khm.coeng_da_old_alt khm.coeng_ttha_alt khm.coeng_do_alt khm.coeng_nna_alt khm.coeng_nna2_alt
++			khm.coeng_ta_alt khm.coeng_tha_alt khm.coeng_to_alt khm.coeng_tho_alt khm.coeng_no_alt
++			khm.coeng_pha_alt khm.coeng_po_alt khm.coeng_pho_alt khm.coeng_mo_alt
++			khm.coeng_lo_alt khm.coeng_vo_alt khm.coeng_sha_alt khm.coeng_ha_alt khm.coeng_qa_alt
++			khm.u khm.u_alt khm.u_aalt ZWJ ZWNJ
+TopMark		khm.i khm.ii khm.y khm.yy khm.i_toan
++			khm.nikahit khm.bantak khm.kakabat khm.muusekatoan khm.treisap khm.robat
++			khm.toandakhiat khm.ahsda khm.samyoksannya khm.viriam khm.atthacan
++			khm.i_ppos khm.ii_ppos khm.y_ppos khm.yy_ppos
++			khm.nikahit_ppos khm.bantak_ppos khm.kakabat_ppos khm.muusekatoan_ppos
++			khm.ie_isol khm.ya_isol
+	
+				EOT	OOB	DEL	EOL	ConsAsc	Ignores	TopMark
+StartText		1	1	1	1	2		1		1
+StartLine		1	1	1	1	2		1		1
+SeenConsAsc		1	1	3	1	2		3		4
+
+	GoTo			Mark?	Advance?	SubstMark	SubstCurrent
+1	StartText		no		yes			none        none
+2	SeenConsAsc		yes		yes			none		none
+3	SeenConsAsc		no		yes			none		none
+4	StartText		no		yes			AltConsAsc	none
+
+AltConsAsc
+	khm.ngo		khm.ngo2
+	khm.co		khm.co2
+	khm.da		khm.da2
+	khm.ttha	khm.ttha2
+	khm.tha		khm.tha2
+	khm.pha		khm.pha2
+	khm.vo		khm.vo2
+	khm.ngie	khm.ngie2
+	khm.cie		khm.cie2
+	khm.daa		khm.daa2
+	khm.tthaa	khm.tthaa2
+	khm.thaa	khm.thaa2
+	khm.phaa	khm.phaa2
+	khm.vie		khm.vie2
+	
+//====================================================
+
+Type			Contextual
+Name			NULL
+Namecode		16016
+Setting			NULL
+Settingcode		0
+Default			yes
+Orientation		HV
+Forward			yes
+Exclusive		no
+
+RoVo		khm.ro khm.vo khm.vo2
+Ignores		khm.u khm.u_alt khm.u_aalt ZWJ ZWNJ
+VowelI		khm.i khm.ii khm.y khm.yy khm.i_toan
+	
+				EOT	OOB	DEL	EOL	RoVo	Ignores	VowelI
+StartText		1	1	1	1	2		1		1
+StartLine		1	1	1	1	2		1		1
+SeenRoVo		1	1	2	1	2		2		3
+
+	GoTo			Mark?	Advance?	SubstMark	SubstCurrent
+1	StartText		no		yes			none        none
+2	SeenRoVo		no		yes			none		none
+3	StartText		no		yes			none		PosVowelI
+
+PosVowelI
+	khm.i			khm.i_ppos
+	khm.ii			khm.ii_ppos
+	khm.y			khm.y_ppos
+	khm.yy			khm.yy_ppos
+	khm.i_toan		khm.i_toan_ppos
+
+//====================================================
+// CONTEXTUAL TOP MARK POSITIONING
+//====================================================
+
+Type			Contextual
+Name			NULL
+Namecode		16017
+Setting			NULL
+Settingcode		0
+Default			yes
+Orientation		HV
+Forward			yes
+Exclusive		no
+
+MuusTreisap	khm.muusekatoan khm.treisap khm.robat
+Ignores		khm.coeng_ka khm.coeng_kha khm.coeng_ko khm.coeng_ngo
++			khm.coeng_ca khm.coeng_cha khm.coeng_co khm.coeng_nyo khm.coeng_nyo2
++			khm.coeng_da khm.coeng_da_old khm.coeng_ttha khm.coeng_do khm.coeng_nna khm.coeng_nna2
++			khm.coeng_ta khm.coeng_tha khm.coeng_to khm.coeng_tho khm.coeng_no
++			khm.coeng_pha khm.coeng_po khm.coeng_pho khm.coeng_mo
++			khm.coeng_lo khm.coeng_vo khm.coeng_sha khm.coeng_ha khm.coeng_qa
++			khm.coeng_ka_alt khm.coeng_kha_alt khm.coeng_ko_alt khm.coeng_ngo_alt
++			khm.coeng_ca_alt khm.coeng_cha_alt khm.coeng_co_alt khm.coeng_nyo_alt khm.coeng_nyo2_alt
++			khm.coeng_da_alt khm.coeng_da_old_alt khm.coeng_ttha_alt khm.coeng_do_alt khm.coeng_nna_alt khm.coeng_nna2_alt
++			khm.coeng_ta_alt khm.coeng_tha_alt khm.coeng_to_alt khm.coeng_tho_alt khm.coeng_no_alt
++			khm.coeng_pha_alt khm.coeng_po_alt khm.coeng_pho_alt khm.coeng_mo_alt
++			khm.coeng_lo_alt khm.coeng_vo_alt khm.coeng_sha_alt khm.coeng_ha_alt khm.coeng_qa_alt
++			ZWNJ
+VowelI		khm.i khm.ii khm.y khm.yy khm.i_toan
+Mark		khm.nikahit khm.bantak khm.kakabat
+	
+				EOT	OOB	DEL	EOL	MuusTreisap	Ignores		VowelI		Mark
+StartText		1	1	1	1	2			1			4			1
+StartLine		1	1	1	1	2			1			4			1
+SeenMuusTreisap	1	1	2	1	1			2			5			3
+SeenVowelI		1	1	4	1	1			4			1			3
+
+	GoTo			Mark?	Advance?	SubstMark	SubstCurrent
+1	StartText		no		yes			none        none
+2	SeenMuusTreisap	no		yes			none		none
+3	StartText		no		yes			none		SupMark
+4	SeenVowelI		no		yes			none		none
+5	StartText		no		yes			none		SupVowelI
+
+SupMark
+	khm.nikahit		khm.nikahit_alt
+	khm.bantak		khm.bantak_alt
+	khm.kakabat		khm.kakabat_alt
+
+SupVowelI
+	khm.i			khm.i_alt
+	khm.ii			khm.ii_alt
+	khm.y			khm.y_alt
+	khm.yy			khm.yy_alt
+	khm.i_toan		khm.i_toan_alt
+	
+//====================================================
+// CONTEXTUAL POSITIONING
+//====================================================
+// Substitutes Ligatures with Vowel A etc plus
+// Subscript Consonants by alternate glyphs making the
+// subscript letter fit under main consonant of the
+// syllable.
+//====================================================
+
+Type			Contextual
+Name			NULL
+Namecode		16018
+Setting			NULL
+Settingcode		0
+Default			yes
+Orientation		HV
+Forward			yes
+Exclusive		no
+
+ConsA			khm.kaa khm.khaa khm.kie khm.khie khm.ngie
++				khm.caa khm.chaa khm.cie khm.chie khm.nyie khm.nyie2
++				khm.daa khm.tthaa khm.die khm.tthie khm.nnaa
++				khm.taa khm.thaa khm.tie khm.thie khm.nie
++				khm.baa khm.phaa khm.pie khm.phie khm.mie
++				khm.yie khm.lie khm.shaa khm.ssie khm.saa khm.haa khm.laa khm.qaa		
++				khm.kau khm.khau khm.kou khm.khou khm.ngou
++				khm.cau khm.chau khm.cou khm.chou khm.nyou khm.nyou2
++				khm.dau khm.tthau khm.dou khm.tthou khm.nnau
++				khm.tau khm.thau khm.tou khm.thou khm.nou
++				khm.bau khm.phau khm.pou khm.phou khm.mou
++				khm.you khm.lou khm.shau khm.ssou khm.sau khm.hau khm.lau khm.qau
++				khm.vie_wide khm.vou_wide khm.cie2 khm.daa2 khm.tthaa2 khm.thaa2 khm.phaa2
++				khm.coeng_khie khm.coeng_chie khm.coeng_tthie
++				khm.coeng_baa khm.coeng_yie khm.coeng_ssie khm.coeng_saa khm.coeng_laa
++				khm.coeng_khou khm.coeng_chou khm.coeng_tthou
++				khm.coeng_bau khm.coeng_you khm.coeng_ssou khm.coeng_sau khm.coeng_lau
++				khm.rie khm.vie khm.vie2
+ConsRoVo		khm.ro khm.vo khm.vo2
++				khm.coeng_kho khm.coeng_cho khm.coeng_ttho khm.coeng_ba
++				khm.coeng_yo khm.coeng_sso khm.coeng_sa  khm.coeng_la
++				khm.coeng_kho_alt khm.coeng_cho_alt khm.coeng_ttho_alt khm.coeng_ba_alt
++				khm.coeng_yo_alt khm.coeng_sso_alt khm.coeng_sa_alt  khm.coeng_la_alt
+MarkTopNB		khm.nikahit khm.nikahit_alt khm.bantak khm.bantak_alt
+MarkTopKMR		khm.kakabat khm.kakabat_alt khm.muusekatoan khm.robat
+MarkTreisap		khm.treisap
+ConsCoeng		khm.coeng_ka khm.coeng_kha khm.coeng_ko khm.coeng_ngo
++				khm.coeng_ca khm.coeng_cha khm.coeng_co khm.coeng_nyo khm.coeng_nyo2
++				khm.coeng_da khm.coeng_da_old khm.coeng_ttha khm.coeng_do khm.coeng_nna khm.coeng_nna2
++				khm.coeng_ta khm.coeng_tha khm.coeng_to khm.coeng_tho khm.coeng_no
++				khm.coeng_pha khm.coeng_po khm.coeng_pho khm.coeng_mo
++				khm.coeng_lo khm.coeng_vo khm.coeng_sha khm.coeng_ha khm.coeng_qa
++				khm.u khm.uu khm.ua
+ConsCoengAlt	khm.coeng_ka_alt khm.coeng_kha_alt khm.coeng_ko_alt khm.coeng_ngo_alt
++				khm.coeng_ca_alt khm.coeng_cha_alt khm.coeng_co_alt khm.coeng_nyo_alt khm.coeng_nyo2_alt
++				khm.coeng_da_alt khm.coeng_da_old_alt khm.coeng_ttha_alt khm.coeng_do_alt khm.coeng_nna_alt khm.coeng_nna2_alt
++				khm.coeng_ta_alt khm.coeng_tha_alt khm.coeng_to_alt khm.coeng_tho_alt khm.coeng_no_alt
++				khm.coeng_pha_alt khm.coeng_po_alt khm.coeng_pho_alt khm.coeng_mo_alt
++				khm.coeng_lo_alt khm.coeng_vo_alt khm.coeng_sha_alt khm.coeng_ha_alt khm.coeng_qa_alt
++				khm.u_alt khm.uu_alt khm.ua_alt
+
+				EOT	OOB	DEL	EOL	ConsA		ConsRoVo	MarkTopNB	MarkTopKMR	MarkTreisap	ConsCoeng	ConsCoengAlt
+StartText		1	1	1	1	2			3			1			1			1			1			1
+StartLine		1	1	1	1	2			3			1			1			1			1			1
+SeenConsA		1	1	2	1	2			3			1			4			4			5			6
+SeenConsRoVo	1	1	3	1	2			3			7			7			1			3			3
+
+	GoTo			Mark?	Advance?	SubstMark	SubstCurrent
+1	StartText		no		yes			none        none
+2	SeenConsA		no		yes			none		none
+3	SeenConsRoVo	no		yes			none		none
+4	SeenConsA		no		yes			none		PosMark
+5	SeenConsA		no		yes			none		PosCoeng
+6	SeenConsA		no		yes			none		PosCoengAlt
+7	StartText		no		yes			none		PposMark
+
+PosMark
+	khm.muusekatoan			khm.muusekatoan_pos
+	khm.treisap				khm.treisap_pos
+	khm.robat				khm.robat_pos
+	khm.kakabat				khm.kakabat_pos
+	khm.kakabat_alt			khm.kakabat_altpos
+	
+PposMark
+	khm.muusekatoan			khm.muusekatoan_ppos
+	khm.robat				khm.robat_ppos
+	khm.kakabat				khm.kakabat_ppos
+	khm.kakabat_alt			khm.kakabat_altppos
+	khm.nikahit				khm.nikahit_ppos
+	khm.nikahit_alt			khm.nikahit_altppos
+	khm.bantak				khm.bantak_ppos
+	khm.bantak_alt			khm.bantak_altppos
+		
+PosCoeng
+	khm.coeng_ka			khm.coeng_ka_pos
+	khm.coeng_kha			khm.coeng_kha_pos
+	khm.coeng_ko			khm.coeng_ko_pos
+	khm.coeng_ngo			khm.coeng_ngo_pos
+	khm.coeng_ca			khm.coeng_ca_pos
+	khm.coeng_cha			khm.coeng_cha_pos
+	khm.coeng_co			khm.coeng_co_pos
+	khm.coeng_nyo			khm.coeng_nyo_pos
+	khm.coeng_da			khm.coeng_da_pos
+	khm.coeng_da_old		khm.coeng_da_old_pos
+	khm.coeng_ttha			khm.coeng_ttha_pos
+	khm.coeng_do			khm.coeng_do_pos
+	khm.coeng_nna			khm.coeng_nna_pos
+	khm.coeng_ta			khm.coeng_ta_pos
+	khm.coeng_tha			khm.coeng_tha_pos
+	khm.coeng_to			khm.coeng_to_pos
+	khm.coeng_tho			khm.coeng_tho_pos
+	khm.coeng_no			khm.coeng_no_pos
+	khm.coeng_pha			khm.coeng_pha_pos
+	khm.coeng_po			khm.coeng_po_pos
+	khm.coeng_pho			khm.coeng_pho_pos
+	khm.coeng_mo			khm.coeng_mo_pos
+	khm.coeng_lo			khm.coeng_lo_pos
+	khm.coeng_vo			khm.coeng_vo_pos
+	khm.coeng_sha			khm.coeng_sha_pos
+	khm.coeng_ha			khm.coeng_ha_pos
+	khm.coeng_qa			khm.coeng_qa_pos
+	khm.coeng_nna2			khm.coeng_nna2_pos
+	khm.coeng_nyo2			khm.coeng_nyo2_pos
+	khm.u					khm.u_pos
+	khm.uu					khm.uu_pos
+	khm.ua					khm.ua_pos
+	
+PosCoengAlt
+	khm.coeng_ka_alt		khm.coeng_ka_altpos
+	khm.coeng_kha_alt		khm.coeng_kha_altpos
+	khm.coeng_ko_alt		khm.coeng_ko_altpos
+	khm.coeng_ngo_alt		khm.coeng_ngo_altpos
+	khm.coeng_ca_alt		khm.coeng_ca_altpos
+	khm.coeng_cha_alt		khm.coeng_cha_altpos
+	khm.coeng_co_alt		khm.coeng_co_altpos
+	khm.coeng_nyo_alt		khm.coeng_nyo_altpos
+	khm.coeng_da_alt		khm.coeng_da_altpos
+	khm.coeng_da_old_alt	khm.coeng_da_old_altpos
+	khm.coeng_ttha_alt		khm.coeng_ttha_altpos
+	khm.coeng_do_alt		khm.coeng_do_altpos
+	khm.coeng_nna_alt		khm.coeng_nna_altpos
+	khm.coeng_ta_alt		khm.coeng_ta_altpos
+	khm.coeng_tha_alt		khm.coeng_tha_altpos
+	khm.coeng_to_alt		khm.coeng_to_altpos
+	khm.coeng_tho_alt		khm.coeng_tho_altpos
+	khm.coeng_no_alt		khm.coeng_no_altpos
+	khm.coeng_pha_alt		khm.coeng_pha_altpos
+	khm.coeng_po_alt		khm.coeng_po_altpos
+	khm.coeng_pho_alt		khm.coeng_pho_altpos
+	khm.coeng_mo_alt		khm.coeng_mo_altpos
+	khm.coeng_lo_alt		khm.coeng_lo_altpos
+	khm.coeng_vo_alt		khm.coeng_vo_altpos
+	khm.coeng_sha_alt		khm.coeng_sha_altpos
+	khm.coeng_ha_alt		khm.coeng_ha_altpos
+	khm.coeng_qa_alt		khm.coeng_qa_altpos
+	khm.coeng_nna2_alt		khm.coeng_nna2_altpos
+	khm.coeng_nyo2_alt		khm.coeng_nyo2_altpos
+	khm.u_alt				khm.u_altpos
+	khm.uu_alt				khm.uu_altpos
+	khm.ua_alt				khm.ua_altpos
+	
+//====================================================
+
+Type			Contextual
+Name			NULL
+Namecode		16019
+Setting			NULL
+Settingcode		0
+Default			yes
+Orientation		HV
+Forward			yes
+Exclusive		no
+
+Nna			khm.nna
+Nnaa		khm.nnaa khm.nnau
+VowelU		khm.u khm.uu khm.ua
+ConsCoeng	khm.coeng_da khm.coeng_da_old khm.coeng_ttha khm.coeng_do khm.coeng_ta khm.coeng_tha khm.coeng_to khm.coeng_tho
++			khm.coeng_da_pos khm.coeng_da_old_pos khm.coeng_ttha_pos khm.coeng_do_pos khm.coeng_ta_pos khm.coeng_tha_pos khm.coeng_to_pos khm.coeng_tho_pos
+VowelUAlt	khm.u_alt khm.uu_alt khm.ua_alt
+Ignores		khm.muusekatoan khm.muusekatoan_pos khm.muusekatoan_ppos khm.treisap khm.robat khm.robat_pos khm.robat_ppos ZWJ ZWNJ
+	
+				EOT	OOB	DEL	EOL	Nna			Nnaa		VowelU		ConsCoeng	VowelUAlt	Ignores
+StartText		1	1	1	1	2			3			1			1			1			1
+StartLine		1	1	1	1	2			3			1			1			1			1
+SeenNna			1	1	2	1	2			3			6			4			6			2
+SeenNnaa		1	1	3	1	2			3			1			5			1			3
+
+	GoTo			Mark?	Advance?	SubstMark	SubstCurrent
+1	StartText		no		yes			none        none
+2	SeenNna			no		yes			none		none
+3	SeenNnaa		no		yes			none		none
+4	SeenNna			no		yes			none		PosNna
+5	SeenNnaa		no		yes			none		PosNnaa
+6	StartText		no		yes			none		PosNna
+
+PosNna
+	khm.u					khm.u_pos
+	khm.uu					khm.uu_pos
+	khm.ua					khm.ua_pos
+	khm.u_alt				khm.u_altpos
+	khm.uu_alt				khm.uu_altpos
+	khm.ua_alt				khm.ua_altpos
+	khm.coeng_da			khm.coeng_da_pos
+	khm.coeng_da_old		khm.coeng_da_old_pos
+	khm.coeng_ttha			khm.coeng_ttha_pos
+	khm.coeng_do			khm.coeng_do_pos
+	khm.coeng_ta			khm.coeng_ta_pos
+	khm.coeng_tha			khm.coeng_tha_pos
+	khm.coeng_to			khm.coeng_to_pos
+	khm.coeng_tho			khm.coeng_tho_pos
+
+PosNnaa
+	khm.coeng_da_pos		khm.coeng_da_ppos
+	khm.coeng_da_old_pos	khm.coeng_da_old_ppos
+	khm.coeng_ttha_pos		khm.coeng_ttha_ppos
+	khm.coeng_do_pos		khm.coeng_do_ppos
+	khm.coeng_ta_pos		khm.coeng_ta_ppos
+	khm.coeng_tha_pos		khm.coeng_tha_ppos
+	khm.coeng_to_pos		khm.coeng_to_ppos
+	khm.coeng_tho_pos		khm.coeng_tho_ppos
+	
+//====================================================
+// SUBSCRIPT ALTERNATE GLYPHS
+//====================================================
+
+Type			Noncontextual
+Name			Subscript Alternates
+Namecode		10
+Setting			Superior Numbers
+Settingcode		1
+Default			no
+Orientation		HV
+Forward			yes
+Exclusive		yes
+
+khm.zero		khm.zero_sup
+khm.one			khm.one_sup
+khm.two			khm.two_sup
+khm.three		khm.three_sup
+khm.four		khm.four_sup
+khm.five		khm.five_sup
+khm.six			khm.six_sup
+khm.seven		khm.seven_sup
+khm.eight		khm.eight_sup
+khm.nine		khm.nine_sup
+
+quotesingle		quotesingle_sup
+parenleft		parenleft_sup
+parenright		parenright_sup
+comma			comma_sup
+period			period_sup
+
+//============================================= EOF ===

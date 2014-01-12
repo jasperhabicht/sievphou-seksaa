@@ -1,0 +1,548 @@
+# ===== SCRIPT AND LANGUAGE COVERAGE ==================
+
+languagesystem DFLT dflt;
+languagesystem latn dflt;
+languagesystem khmr dflt;
+languagesystem khmr KHM;
+
+
+# ===== CONSONANT GROUPS ==============================
+
+@AllCons=[
+  khm.ka khm.kha khm.ko khm.kho khm.ngo
+  khm.ca khm.cha khm.co khm.cho khm.nyo khm.nyo2
+  khm.da khm.ttha khm.do khm.ttho khm.nna
+  khm.ta khm.tha khm.to khm.tho khm.no
+  khm.ba khm.pha khm.po khm.pho khm.mo
+  khm.yo khm.ro khm.lo khm.vo khm.vo_wide
+  khm.sha khm.sso khm.sa khm.ha khm.la khm.qa
+];
+
+@Cons=[
+  khm.ka khm.kha khm.ko khm.ngo
+  khm.ca khm.cha khm.co
+  khm.da khm.ttha khm.do
+  khm.ta khm.tha khm.to khm.tho khm.no
+  khm.pha khm.po khm.pho khm.mo khm.vo_wide
+  khm.sha khm.qa
+];
+
+@ConsNlt=[
+  khm.ngo khm.co khm.da khm.ttha khm.tha khm.pha
+];
+
+@ConsAlt=[
+  khm.ngo2 khm.co2 khm.da2 khm.ttha2 khm.tha2 khm.pha2
+];
+
+@ConsLH=[
+  khm.lo khm.ha
+];
+
+
+# ===== CONSONANT SUBSCRIPT GROUPS ====================
+
+@AllCoengCons=[
+  khm.coeng_ka khm.coeng_kha khm.coeng_ko khm.coeng_kho khm.coeng_ngo
+  khm.coeng_ca khm.coeng_cha khm.coeng_co khm.coeng_cho khm.coeng_nyo khm.coeng_nyo2
+  khm.coeng_da khm.coeng_ttha khm.coeng_do khm.coeng_ttho khm.coeng_nna khm.coeng_nna2
+  khm.coeng_ta khm.coeng_tha khm.coeng_to khm.coeng_tho khm.coeng_no
+  khm.coeng_ba khm.coeng_pha khm.coeng_po khm.coeng_pho khm.coeng_mo
+  khm.coeng_yo khm.coeng_ro khm.coeng_lo khm.coeng_vo
+  khm.coeng_sha khm.coeng_sso khm.coeng_sa khm.coeng_ha khm.coeng_qa
+  khm.coeng_qu khm.coeng_ry khm.coeng_ryy khm.coeng_ly khm.coeng_lyy khm.coeng_qae
+];
+
+@CoengCons=[
+  khm.coeng_ka khm.coeng_kha khm.coeng_ko khm.coeng_ngo
+  khm.coeng_ca khm.coeng_cha khm.coeng_co
+  khm.coeng_da khm.coeng_ttha khm.coeng_do khm.coeng_nna
+  khm.coeng_ta khm.coeng_tha khm.coeng_to khm.coeng_tho khm.coeng_no
+  khm.coeng_pha khm.coeng_po khm.coeng_pho khm.coeng_mo khm.coeng_vo
+  khm.coeng_sha khm.coeng_qa
+  khm.coeng_qi khm.coeng_qu khm.coeng_ry khm.coeng_ryy khm.coeng_ly khm.coeng_lyy khm.coeng_qae
+];
+
+@CoengConsLH=[
+  khm.coeng_lo khm.coeng_ha
+];
+
+@CoengConsNy=[
+  khm.coeng_nyo khm.coeng_nyo2
+];
+
+@CoengConsAlt=[
+  khm.coeng_ka_alt khm.coeng_kha_alt khm.coeng_ko_alt khm.coeng_ngo_alt
+  khm.coeng_ca_alt khm.coeng_cha_alt khm.coeng_co_alt
+  khm.coeng_da_alt khm.coeng_ttha_alt khm.coeng_do_alt khm.coeng_nna_alt
+  khm.coeng_ta_alt khm.coeng_tha_alt khm.coeng_to_alt khm.coeng_tho_alt khm.coeng_no_alt
+  khm.coeng_pha_alt khm.coeng_po_alt khm.coeng_pho_alt khm.coeng_mo_alt khm.coeng_vo_alt
+  khm.coeng_sha_alt khm.coeng_qa_alt
+  khm.coeng_qi_alt khm.coeng_qu_alt khm.coeng_ry_alt khm.coeng_ryy_alt khm.coeng_ly_alt khm.coeng_lyy_alt khm.coeng_qae_alt
+];
+
+@CoengConsLHAlt=[
+  khm.coeng_lo_alt khm.coeng_ha_alt
+];
+
+@CoengConsNyAlt=[
+  khm.coeng_nyo_alt khm.coeng_nyo2_alt
+];
+
+@ConsBar=[
+  khm.kho khm.cho khm.ttho khm.ba 
+  khm.yo khm.sso khm.sa khm.la
+];
+
+@CoengConsBar=[
+  khm.coeng_kho khm.coeng_cho khm.coeng_ttho khm.coeng_ba 
+  khm.coeng_yo khm.coeng_sso khm.coeng_sa khm.coeng_la
+];
+
+@CoengConsBar2=[
+  khm.coeng_kho_alt khm.coeng_cho_alt khm.coeng_ttho_alt khm.coeng_ba_alt 
+  khm.coeng_yo_alt khm.coeng_sso_alt khm.coeng_sa_alt khm.coeng_la_alt
+];
+
+
+# ===== CONSONANT-VOWEL LIGATURE GROUPS ===============
+
+@AllConsAa=[
+  khm.kaa khm.khaa khm.kie khm.khie khm.ngie
+  khm.caa khm.chaa khm.cie khm.chie khm.nyie khm.nyie2
+  khm.daa khm.tthaa khm.die khm.tthie khm.nnaa
+  khm.taa khm.thaa khm.tie khm.thie khm.nie
+  khm.baa khm.phaa khm.pie khm.phie khm.mie
+  khm.yie khm.rie khm.lie khm.vie khm.vie_wide
+  khm.shaa khm.ssie khm.saa khm.haa khm.laa khm.qaa 
+];
+
+@ConsAa=[
+  khm.kaa khm.khaa khm.kie khm.ngie
+  khm.caa khm.chaa khm.cie
+  khm.daa khm.tthaa khm.die
+  khm.taa khm.thaa khm.tie khm.thie khm.nie
+  khm.phaa khm.pie khm.phie khm.mie
+  khm.shaa khm.qaa
+];
+
+@ConsAaNlt=[
+  khm.ngie khm.cie khm.daa khm.tthaa khm.thaa khm.phaa
+];
+
+@ConsAaAlt=[
+  khm.ngie2 khm.cie2 khm.daa2 khm.tthaa2 khm.thaa2 khm.phaa2
+];
+
+@ConsLHAa=[
+  khm.lie khm.haa
+];
+
+@ConsBarAa=[
+  khm.khie khm.chie khm.tthie khm.baa 
+  khm.yie khm.ssie khm.saa khm.laa
+];
+
+@AllConsAu=[
+  khm.kau khm.khau khm.kou khm.khou khm.ngou
+  khm.cau khm.chau khm.cou khm.chou khm.nyou khm.nyou2
+  khm.dau khm.tthau khm.dou khm.tthou khm.nnau
+  khm.tau khm.thau khm.tou khm.thou khm.nou
+  khm.bau khm.phau khm.pou khm.phou khm.mou
+  khm.you khm.rou khm.lou khm.vou khm.vou_wide
+  khm.shau khm.ssou khm.sau khm.hau khm.lau khm.qau
+];
+
+@ConsAu=[
+  khm.kau khm.khau khm.kou khm.ngou
+  khm.cau khm.chau khm.cou 
+  khm.dau khm.tthau khm.dou
+  khm.tau khm.thau khm.tou khm.thou khm.nou
+  khm.phau khm.pou khm.phou khm.mou
+  khm.shau khm.qau
+];
+
+@ConsLHAu=[
+  khm.lou khm.hau
+];
+
+@ConsBarAu=[
+  khm.khou khm.chou khm.tthou khm.bau 
+  khm.you khm.ssou khm.sau khm.lau
+];
+
+
+# ===== CONSONANT SUBSCRIPT-VOWEL LIGATURE GROUPS =====
+
+@CoengConsBarAa=[
+  khm.coeng_khie khm.coeng_chie khm.coeng_tthie khm.coeng_baa 
+  khm.coeng_yie khm.coeng_ssie khm.coeng_saa khm.coeng_laa
+];
+
+@CoengConsBar2Aa=[
+  khm.coeng_khie_alt khm.coeng_chie_alt khm.coeng_tthie_alt khm.coeng_baa_alt 
+  khm.coeng_yie_alt khm.coeng_ssie_alt khm.coeng_saa_alt khm.coeng_laa_alt
+];
+
+@CoengConsBarAu=[
+  khm.coeng_khou khm.coeng_chou khm.coeng_tthou khm.coeng_bau 
+  khm.coeng_you khm.coeng_ssou khm.coeng_sau khm.coeng_lau
+];
+
+@CoengConsBar2Au=[
+  khm.coeng_khou_alt khm.coeng_chou_alt khm.coeng_tthou_alt khm.coeng_bau_alt
+  khm.coeng_you_alt khm.coeng_ssou_alt khm.coeng_sau_alt khm.coeng_lau_alt
+];
+
+
+# ===== SPECIAL CHARACTER GROUPS ======================
+
+@YaIe=[
+  khm.ya_isol khm.ie_isol
+];
+
+@YaIe2=[
+  khm.ya_alt khm.ie_alt
+];
+
+@Top=[
+  khm.nikahit khm.muusekatoan khm.treisap
+  khm.bantak khm.robat khm.toandakhiat khm.kakabat
+  khm.ahsda khm.samyoksannya khm.viriam khm.bathamasat khm.atthacan
+];
+
+@VowelI=[
+  khm.i khm.ii khm.y khm.yy
+  khm.i_toan
+];
+
+@VowelISup=[
+  khm.i_alt khm.ii_alt khm.y_alt khm.yy_alt
+  khm.i_toan_alt
+];
+
+@VowelU=[
+  khm.u khm.uu khm.ua
+];
+
+# ===== ALTERNATE GLYPH FORM FEATURES =================
+
+feature ss01 {
+  sub khm.vo by khm.vo_wide;
+} ss01;
+
+feature ss02 {
+  sub khm.coeng_da by khm.coeng_da_old;
+} ss02;
+
+feature sups {
+  sub khm.zero by khm.zero_sup;
+  sub khm.one by khm.one_sup;
+  sub khm.two by khm.two_sup;
+  sub khm.three by khm.three_sup;
+  sub khm.four by khm.four_sup;
+  sub khm.five by khm.five_sup;
+  sub khm.six by khm.six_sup;
+  sub khm.seven by khm.seven_sup;
+  sub khm.eight by khm.eight_sup;
+  sub khm.nine by khm.nine_sup;
+
+  sub quotesingle by quotesingle_sup;
+  sub parenleft by parenleft_sup;
+  sub parenright by parenright_sup;
+  sub comma by comma_sup;
+  sub period by period_sup;
+} sups;
+
+# ===== LANGUAGE BASED FORM FEATURES ==================
+
+# ===== Coeng Ro Substitution =========================
+
+feature pref {
+  sub khm.coeng khm.ro by khm.coeng_ro;
+} pref;
+
+# ===== Coeng Consonant Substitution ==================
+
+feature blwf {
+  sub khm.coeng khm.ka by khm.coeng_ka;
+  sub khm.coeng khm.kha by khm.coeng_kha;
+  sub khm.coeng khm.ko by khm.coeng_ko;
+  sub khm.coeng khm.ngo by khm.coeng_ngo;
+  sub khm.coeng khm.ca by khm.coeng_ca;
+  sub khm.coeng khm.cha by khm.coeng_cha;
+  sub khm.coeng khm.co by khm.coeng_co;
+  sub khm.coeng khm.nyo by khm.coeng_nyo;
+  sub khm.coeng khm.da by khm.coeng_da;
+  sub khm.coeng khm.ttha by khm.coeng_ttha;
+  sub khm.coeng khm.do by khm.coeng_do;
+  sub khm.coeng khm.nna by khm.coeng_nna;
+  sub khm.coeng khm.ta by khm.coeng_ta;
+  sub khm.coeng khm.tha by khm.coeng_tha;
+  sub khm.coeng khm.to by khm.coeng_to;
+  sub khm.coeng khm.tho by khm.coeng_tho;
+  sub khm.coeng khm.no by khm.coeng_no;
+  sub khm.coeng khm.pha by khm.coeng_pha;
+  sub khm.coeng khm.po by khm.coeng_po;
+  sub khm.coeng khm.pho by khm.coeng_pho;
+  sub khm.coeng khm.mo by khm.coeng_mo;
+  sub khm.coeng khm.lo by khm.coeng_lo;
+  sub khm.coeng khm.vo by khm.coeng_vo;
+  sub khm.coeng khm.ha by khm.coeng_ha;
+  sub khm.coeng khm.sha by khm.coeng_sha;
+  sub khm.coeng khm.qa by khm.coeng_qa;
+  sub khm.coeng khm.qi by khm.coeng_qi;
+  sub khm.coeng khm.qu by khm.coeng_qu;
+  sub khm.coeng khm.ry by khm.coeng_ry;
+  sub khm.coeng khm.ryy by khm.coeng_ryy;
+  sub khm.coeng khm.ly by khm.coeng_ly;
+  sub khm.coeng khm.lyy by khm.coeng_lyy;
+  sub khm.coeng khm.qae by khm.coeng_qae;
+} blwf;
+
+# ===== Vowel Sign Replacement (Oe) ===================
+
+feature abvf {
+  sub khm.oe by khm.ii;
+} abvf;
+
+# ===== Coeng Consonant Substitution (Upstroke) =======
+# ===== Enclosing Vowel Sign Replancement =============
+
+feature pstf {
+  sub khm.coeng khm.kho by khm.coeng_kho;
+  sub khm.coeng khm.cho by khm.coeng_cho;
+  sub khm.coeng khm.ttho by khm.coeng_ttho;
+  sub khm.coeng khm.ba by khm.coeng_ba;
+  sub khm.coeng khm.yo by khm.coeng_yo;
+  sub khm.coeng khm.sso by khm.coeng_sso;
+  sub khm.coeng khm.sa by khm.coeng_sa;
+  sub khm.coeng khm.la by khm.coeng_la;
+  sub khm.ya by khm.ya_isol;
+  sub khm.ie by khm.ie_isol;
+  sub khm.oo by khm.aa;
+  sub khm.au by khm.au_isol;
+} pstf;
+
+
+# ===== CONJUNCT AND TYPOGRAPHICAL FORM FEATURES ======
+
+feature pres {
+  sub khm.coeng_ro' @AllCons @CoengCons by khm.coeng_ro_alt;
+} pres;
+
+# ===== Nyo and Coeng Nyo Replacement =================
+
+feature blws {
+  sub khm.nyo' @AllCoengCons by khm.nyo2;
+  sub [khm.nyo2 khm.nyie2 khm.nyou2] khm.coeng_nyo' by khm.coeng_nyo2;
+  sub [khm.nna khm.nnaa khm.nnau] khm.coeng_nna' by khm.coeng_nna2;
+
+  sub khm.qu' @AllCoengCons by khm.qu_short;
+  sub khm.quk' @AllCoengCons by khm.quk_short;
+  sub khm.quu' @AllCoengCons by khm.quu_short;
+  sub khm.quv' @AllCoengCons by khm.quv_short;
+  sub khm.qoo' @AllCoengCons by khm.qoo_short;  
+  sub khm.qauv' @AllCoengCons by khm.qauv_short;
+
+  sub khm.qu' [khm.u khm.uu khm.ua] by khm.qu_short;
+  sub khm.quk' [khm.u khm.uu khm.ua] by khm.quk_short;
+  sub khm.quu' [khm.u khm.uu khm.ua] by khm.quu_short;
+  sub khm.quv' [khm.u khm.uu khm.ua] by khm.quv_short;
+  sub khm.qoo' [khm.u khm.uu khm.ua] by khm.qoo_short;
+  sub khm.qauv' [khm.u khm.uu khm.ua] by khm.qauv_short;
+  
+  sub [khm.la] @AllCoengCons khm.u' by khm.u_aalt;
+  sub [khm.la] @AllCoengCons khm.uu' by khm.uu_aalt;
+  sub [khm.la] @AllCoengCons khm.ua' by khm.ua_aalt;
+  
+  sub @AllCoengCons @AllCoengCons khm.u' by khm.u_aalt;
+  sub @AllCoengCons @AllCoengCons khm.uu' by khm.uu_aalt;
+  sub @AllCoengCons @AllCoengCons khm.ua' by khm.ua_aalt;
+
+  sub [khm.la] khm.u' by khm.u_alt;
+  sub [khm.la] khm.uu' by khm.uu_alt;
+  sub [khm.la] khm.ua' by khm.ua_alt;
+
+  sub @AllCoengCons khm.u' by khm.u_alt;
+  sub @AllCoengCons khm.uu' by khm.uu_alt;
+  sub @AllCoengCons khm.ua' by khm.ua_alt;
+  
+  sub [khm.la] @CoengCons' by @CoengConsAlt;
+  sub [khm.la] @CoengConsLH' by @CoengConsLHAlt;
+  sub [khm.la] @CoengConsNy' by @CoengConsNyAlt;  
+
+  sub [khm.la] @VowelI @CoengCons' by @CoengConsAlt;
+  sub [khm.la] @VowelI @CoengConsLH' by @CoengConsLHAlt;
+  sub [khm.la] @VowelI @CoengConsNy' by @CoengConsNyAlt;  
+
+  sub @AllCoengCons @CoengCons' by @CoengConsAlt;
+  sub @AllCoengCons @CoengConsLH' by @CoengConsLHAlt;
+  sub @AllCoengCons @CoengConsNy' by @CoengConsNyAlt;
+
+  sub @AllCoengCons @VowelI @CoengCons' by @CoengConsAlt;
+  sub @AllCoengCons @VowelI @CoengConsLH' by @CoengConsLHAlt;
+  sub @AllCoengCons @VowelI @CoengConsNy' by @CoengConsNyAlt;
+} blws;
+
+# ===== Vowel plus Treisap Ligatures and Replacements =
+
+feature abvs {
+  sub @ConsNlt' [@Top @VowelI] by @ConsAlt;
+  sub @ConsNlt' [@CoengCons @CoengConsLH @CoengConsNy] [@Top @VowelI] by @ConsAlt;
+  sub @ConsNlt' [@CoengCons @CoengConsLH @CoengConsNy] [@CoengConsAlt @CoengConsLHAlt @CoengConsNyAlt] [@Top @VowelI] by @ConsAlt;
+  sub @ConsAaNlt' [@Top @VowelI] by @ConsAaAlt;
+  sub @ConsAaNlt' [@CoengCons @CoengConsLH @CoengConsNy] [@Top @VowelI] by @ConsAaAlt;
+  sub @ConsAaNlt' [@CoengCons @CoengConsLH @CoengConsNy] [@CoengConsAlt @CoengConsLHAlt @CoengConsNyAlt] [@Top @VowelI] by @ConsAaAlt;
+  sub khm.vo' [@Top @VowelI] by khm.vo2;
+  sub khm.vo' [@CoengCons @CoengConsLH @CoengConsNy] [@Top @VowelI] by khm.vo2;
+  sub khm.vo' [@CoengCons @CoengConsLH @CoengConsNy] [@CoengConsAlt @CoengConsLHAlt @CoengConsNyAlt] [@Top @VowelI] by khm.vo2;
+
+  sub khm.i khm.toandakhiat by khm.i_toan;
+  
+  sub khm.treisap' khm.i by khm.u;
+  sub khm.treisap' khm.ii by khm.u;
+  sub khm.treisap' khm.y by khm.u;
+  sub khm.treisap' khm.yy by khm.u;
+  
+  sub khm.muusekatoan' khm.i by khm.u;
+  sub khm.muusekatoan' khm.ii by khm.u;
+  sub khm.muusekatoan' khm.y by khm.u;
+  sub khm.muusekatoan' khm.yy by khm.u;
+  
+  sub khm.nikahit' khm.i by khm.u;
+  sub khm.nikahit' khm.ii by khm.u;
+  sub khm.nikahit' khm.y by khm.u;
+  sub khm.nikahit' khm.yy by khm.u;
+  
+  sub @Top @VowelI' by @VowelISup;
+  sub @Top ZWNJ @VowelI' by @VowelISup;
+} abvs;
+
+# ===== Coeng Upstroke Second Level Replacement =======
+
+feature psts {
+  sub [khm.la] @CoengConsBar' by @CoengConsBar2;
+  sub [khm.la] @VowelI @CoengConsBar' by @CoengConsBar2;
+
+  sub @AllCoengCons @CoengConsBar' by @CoengConsBar2;
+  sub @AllCoengCons @VowelI @CoengConsBar' by @CoengConsBar2;
+
+  sub @AllCoengCons @YaIe' by @YaIe2;
+} psts;
+
+# ===== Consonant plus Vowel A Ligatures ==============
+
+feature clig {
+  sub @AllCons' khm.aa by @AllConsAa;
+  sub @AllCons' [@CoengCons @CoengConsLH @CoengConsNy] khm.aa by @AllConsAa;
+  sub @AllCons' [@CoengCons @CoengConsLH @CoengConsNy] [@CoengConsAlt @CoengConsLHAlt @CoengConsNyAlt] khm.aa by @AllConsAa;
+  sub @ConsAlt' khm.aa by @ConsAaAlt;
+  sub @ConsAlt' [@CoengCons @CoengConsLH @CoengConsNy] khm.aa by @ConsAaAlt;
+  sub @ConsAlt' [@CoengCons @CoengConsLH @CoengConsNy] [@CoengConsAlt @CoengConsLHAlt @CoengConsNyAlt] khm.aa by @ConsAaAlt;
+  sub @CoengConsBar' khm.aa by @CoengConsBarAa;
+  sub @CoengConsBar2' khm.aa by @CoengConsBar2Aa;
+
+  sub @AllCons' khm.au_isol by @AllConsAu;
+  sub @AllCons' [@CoengCons @CoengConsLH @CoengConsNy] khm.au_isol by @AllConsAu;
+  sub @AllCons' [@CoengCons @CoengConsLH @CoengConsNy] [@CoengConsAlt @CoengConsLHAlt @CoengConsNyAlt] khm.au_isol by @AllConsAu;
+  sub @CoengConsBar' khm.au_isol by @CoengConsBarAu;
+  sub @CoengConsBar2' khm.au_isol by @CoengConsBar2Au;
+
+  sub @AllConsAa khm.aa' by DEL;
+  sub @AllConsAa [@CoengCons @CoengConsLH @CoengConsNy] khm.aa' by DEL;
+  sub @AllConsAa [@CoengCons @CoengConsLH @CoengConsNy] [@CoengConsAlt @CoengConsLHAlt @CoengConsNyAlt] khm.aa' by DEL;  
+  sub @ConsAaAlt khm.aa' by DEL;
+  sub @ConsAaAlt [@CoengCons @CoengConsLH @CoengConsNy] khm.aa' by DEL;
+  sub @ConsAaAlt [@CoengCons @CoengConsLH @CoengConsNy] [@CoengConsAlt @CoengConsLHAlt @CoengConsNyAlt] khm.aa' by DEL;  
+  sub @CoengConsBarAa khm.aa' by DEL;
+  sub @CoengConsBar2Aa khm.aa' by DEL;
+
+  sub @AllConsAu khm.au_isol' by DEL;
+  sub @AllConsAu [@CoengCons @CoengConsLH @CoengConsNy] khm.au_isol' by DEL;
+  sub @AllConsAu [@CoengCons @CoengConsLH @CoengConsNy] [@CoengConsAlt @CoengConsLHAlt @CoengConsNyAlt] khm.au_isol' by DEL;
+  sub @CoengConsBarAu khm.au_isol' by DEL;
+  sub @CoengConsBar2Au khm.au_isol' by DEL;
+} clig;
+
+
+# ===== POSITIONING FEATURES ==========================
+
+# ===== Below mark positioning ========================
+
+feature blwm {
+  markClass [@CoengCons @CoengConsLH @CoengConsNy @VowelU] <anchor -280 0> @MarkCoeng;
+  markClass [khm.coeng_nna2] <anchor -560 0> @MarkCoeng;
+
+  pos base [@Cons @ConsAlt @ConsAa @ConsAaAlt @ConsAu] <anchor 280 0> mark @MarkCoeng;
+  pos base [@ConsLH @ConsLHAa @ConsLHAu] <anchor 560 0> mark @MarkCoeng;
+  pos base [khm.ba khm.baa khm.bau] <anchor 280 0> mark @MarkCoeng;
+  pos base [khm.cho khm.chie khm.chou] <anchor 840 0> mark @MarkCoeng;
+  pos base [khm.kho khm.ttho khm.nna khm.yo khm.sa khm.nyo2] <anchor 560 0> mark @MarkCoeng;
+  pos base [khm.khie khm.tthie khm.nnaa khm.yie khm.saa khm.nyie2] <anchor 560 0> mark @MarkCoeng;
+  pos base [khm.khou khm.tthou khm.nnau khm.you khm.sau khm.nyou2] <anchor 560 0> mark @MarkCoeng;
+  pos base [khm.ro khm.rie khm.rou khm.vo khm.vo2 khm.vie khm.vie2 khm.vou] <anchor 0 0> mark @MarkCoeng;
+  pos base [khm.la khm.laa khm.lau] <anchor 0 0> mark @MarkCoeng;
+  pos base [@CoengConsBarAa @CoengConsBarAu] <anchor 0 0> mark @MarkCoeng;
+} blwm;
+
+# ===== Above mark positioning ========================
+
+feature abvm {
+  markClass [@Top @VowelI] <anchor -280 700> @MarkTop;
+
+  pos base [@Cons @ConsAlt] <anchor 280 700> mark @MarkTop;
+  pos base [@ConsAa @ConsAaAlt @ConsAu] <anchor 560 700> mark @MarkTop;
+  pos base khm.ba <anchor 280 700> mark @MarkTop;
+  pos base [khm.baa khm.bau] <anchor 560 700> mark @MarkTop;
+  pos base @ConsLH <anchor 560 700> mark @MarkTop;
+  pos base [@ConsLHAa @ConsLHAu] <anchor 840 700> mark @MarkTop;
+  pos base [khm.kho khm.ttho khm.yo khm.sa khm.nyo khm.nyo2] <anchor 560 700> mark @MarkTop;
+  pos base [khm.khie khm.tthie khm.yie khm.saa khm.nyie khm.nyie2] <anchor 840 700> mark @MarkTop;
+  pos base [khm.khou khm.tthou khm.you khm.sau khm.nyou khm.nyou2] <anchor 840 700> mark @MarkTop;
+  pos base [khm.nna khm.cho] <anchor 840 700> mark @MarkTop;
+  pos base [khm.nnaa khm.nnau khm.chie khm.chou] <anchor 1120 700> mark @MarkTop;
+  pos base [khm.ro khm.vo khm.vo2] <anchor 140 700> mark @MarkTop;
+  pos base [khm.rie khm.rou khm.vie khm.vie2 khm.vou khm.la] <anchor 280 700> mark @MarkTop;
+  pos base [khm.laa khm.lau] <anchor 840 700> mark @MarkTop;
+  pos base [@CoengConsBar @CoengConsBar2] <anchor 140 700> mark @MarkTop;
+  pos base [@CoengConsBarAa @CoengConsBarAu @CoengConsBar2Aa @CoengConsBar2Au] <anchor 280 700> mark @MarkTop;
+} abvm;
+
+# ===== Mark-to-mark positioning ======================
+
+feature mkmk {
+  markClass [@CoengCons @CoengConsLH @CoengConsNy @VowelU] <anchor -280 0> @MarkCoengCoeng;
+  markClass [khm.coeng_nna2] <anchor -560 0> @MarkCoengCoeng;
+
+  pos mark [@CoengCons @CoengConsLH] <anchor -280 0> mark @MarkCoengCoeng;
+  pos mark khm.coeng_nna2 <anchor -560 0> mark @MarkCoengCoeng;
+  pos mark khm.coeng_nyo <anchor -280 0> mark @MarkCoengCoeng;
+  pos mark khm.coeng_nyo2 <anchor -280 0> mark @MarkCoengCoeng;
+} mkmk;
+
+
+# ===== KERNING FEATURES =====
+
+feature kern {
+  pos [khm.e khm.ae khm.ai] [khm.cha khm.no khm.pha khm.ro khm.vo khm.qa] 50;
+  pos [khm.e khm.ae khm.ai] [khm.chaa khm.nie khm.phaa khm.rie khm.vie khm.qaa] 50;
+  pos [khm.e khm.ae khm.ai] [khm.chau khm.nou khm.phou khm.rou khm.vou khm.qau] 50;
+  pos [khm.five khm.eight khm.nine] [khm.two] 100;
+  pos [khm.five khm.eight khm.nine] [khm.six] 150;
+  pos [khm.seven] [khm.two] 50;
+  pos [khm.seven] [khm.six] 100;
+  pos [khm.zero khm.one] [khm.zero khm.one] -50;
+  pos [period] [khm.zero khm.one] -50;
+  pos [khm.zero khm.one] [period] -50;
+  
+  pos [khm.five_sup khm.eight_sup khm.nine_sup] [khm.two_sup] 80;
+  pos [khm.five_sup khm.eight_sup khm.nine_sup] [khm.six_sup] 120;
+  pos [khm.seven_sup] [khm.two_sup] 40;
+  pos [khm.seven_sup] [khm.six_sup] 80;
+  pos [khm.zero_sup khm.one_sup] [khm.zero_sup khm.one_sup] -40;
+  pos [period_sup] [khm.zero_sup khm.one_sup] -40;
+  pos [khm.zero_sup khm.one_sup] [period_sup] -40;
+  
+  pos [khm.phnekmoan] [khm.khan] -100;
+} kern;
